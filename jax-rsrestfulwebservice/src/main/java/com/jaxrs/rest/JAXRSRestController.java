@@ -62,13 +62,35 @@ public class JAXRSRestController {
 		return Response.ok().entity(ack).build();
 	}
 	
-	//not working as expected
+	@Path("/xmlRequestProduceJson")
+	@POST
+	@Consumes(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response submitXmlRequestProduceJson(SampleObject sampleObject, @Context HttpHeaders headers)
+	{
+		Ack ack = new Ack();
+		ack.setUniqueId(sampleObject.getId());
+		ack.setType(sampleObject.getName());
+		return Response.ok().entity(ack).build();
+	}
+	
 	@Path("/jsonRequest")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response submitJsonRequest(SampleObject sampleObject, @Context HttpHeaders headers)
 	{
-		System.out.println("VALUE = "+sampleObject.getId());
+		Ack ack = new Ack();
+		ack.setUniqueId(sampleObject.getId());
+		ack.setType(sampleObject.getName());
+		return Response.ok().entity(ack).build();
+	}
+	
+	@Path("/jsonRequestProduceJson")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response submitJsonRequestProduceJson(SampleObject sampleObject, @Context HttpHeaders headers)
+	{
 		Ack ack = new Ack();
 		ack.setUniqueId(sampleObject.getId());
 		ack.setType(sampleObject.getName());

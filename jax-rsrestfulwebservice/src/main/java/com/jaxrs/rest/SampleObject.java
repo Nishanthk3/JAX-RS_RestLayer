@@ -2,10 +2,7 @@ package com.jaxrs.rest;
 
 import javax.xml.bind.annotation.*;
 
-import org.codehaus.jackson.annotate.JsonTypeName;
-import org.codehaus.jackson.map.annotate.*;
-
-//import com.fasterxml.jackson.annotation.JsonRootName;
+import org.codehaus.jackson.map.annotate.JsonRootName;
 
 @XmlRootElement(name = "sampleObject")
 @JsonRootName(value = "sampleObject")
