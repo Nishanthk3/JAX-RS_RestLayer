@@ -5,12 +5,18 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ContextResolver;
+
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.jaxrs.rest.SampleObject;
 import com.jaxrs.rest.Ack;
 
 @Path("/")
 public class JAXRSRestController {
+	
+	@Context
+    private ContextResolver<ObjectMapper> mapperResolver;
 
 	@GET
 	@Produces(MediaType.TEXT_HTML)
