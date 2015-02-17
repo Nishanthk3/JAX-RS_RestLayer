@@ -1,5 +1,7 @@
 package com.jaxrs.rest;
 
+import java.util.List;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
@@ -100,6 +102,42 @@ public class JAXRSRestController {
 		Ack ack = new Ack();
 		ack.setUniqueId(sampleObject.getId());
 		ack.setType(sampleObject.getName());
+		return Response.ok().entity(ack).build();
+	}
+	
+	@Path("/xmlListRequest")
+	@POST
+	@Consumes(MediaType.APPLICATION_XML)
+	public Response submitXmlListRequest(Athlete athlete, @Context HttpHeaders headers)
+	{
+		Ack ack = new Ack();
+		System.out.println(athlete.getName());
+		System.out.println(athlete.getAddress());
+		System.out.println(athlete.getAge());
+		List<SportsKnown> lists = athlete.getSports();
+		for(SportsKnown list : lists)
+		{
+			System.out.println(list.getSport());
+			System.out.println(list.getHandedness());
+		}
+		return Response.ok().entity(ack).build();
+	}
+	
+	@Path("/jsonListRequest")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response submitJsonListRequest(Athlete athlete, @Context HttpHeaders headers)
+	{
+		Ack ack = new Ack();
+		System.out.println(athlete.getName());
+		System.out.println(athlete.getAddress());
+		System.out.println(athlete.getAge());
+		List<SportsKnown> lists = athlete.getSports();
+		for(SportsKnown list : lists)
+		{
+			System.out.println(list.getSport());
+			System.out.println(list.getHandedness());
+		}
 		return Response.ok().entity(ack).build();
 	}
 }

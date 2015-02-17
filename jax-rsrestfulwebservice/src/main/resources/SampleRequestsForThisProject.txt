@@ -1,0 +1,73 @@
+For context Root 
+/xmlRequest
+REQUEST
+	<sampleObject>
+		<id>3453265743654</id>
+		<name>fjdisbcjovdfnsbnpabps</name>
+	</sampleObject>
+	
+	
+/xmlRequestProduceJson
+REQUEST
+	<sampleObject>
+		<id>3453265743654</id>
+		<name>fjdisbcjovdfnsbnpabps</name>
+	</sampleObject>
+
+
+/jsonRequest
+REQUEST
+	{
+	  "sampleObject": {
+	    "id": "3453265743654",
+	    "name": "fjdisbcjovdfnsbnpabps"
+	  }
+	}
+
+	
+/jsonRequestProduceJson
+REQUEST
+	{
+	  "sampleObject": {
+	    "id": "3453265743654",
+	    "name": "fjdisbcjovdfnsbnpabps"
+	  }
+	}
+	
+	
+/xmlListRequest
+REQUEST
+	<athlete>
+		<name>nishanth</name>
+		<address>123 st</address>
+		<age>24</age>
+		<sports>
+			<sport>cricket</sport>
+			<handedness>left</handedness>
+		</sports>
+		<sports>
+			<sport>football</sport>
+			<handedness>right</handedness>
+		</sports>
+	</athlete>
+
+	
+/jsonListRequest
+REQUEST
+	{
+	  "athlete": {
+	    "name": "nishanth",
+	    "address": "123 st",
+	    "age": "24",
+	    "sports": [
+	      {
+	        "sport": "cricket",
+	        "handedness": "left"
+	      },
+	      {
+	        "sport": "football",
+	        "handedness": "right"
+	      }
+	    ]
+	  }
+	}
