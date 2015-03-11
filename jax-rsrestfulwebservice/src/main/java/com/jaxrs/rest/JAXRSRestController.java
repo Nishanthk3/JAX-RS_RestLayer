@@ -1,7 +1,6 @@
 package com.jaxrs.rest;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -18,9 +17,7 @@ import com.jaxrs.rest.Ack;
 @Path("/")
 public class JAXRSRestController {
 	
-	SingletonConcurrentHashMap obj = new SingletonConcurrentHashMap();
-	Map<String,Integer> map = obj.getInstance();
-	int count = 0;
+	SingletonConcurrentHashMap singletonConcurrentHashMapObj = SingletonConcurrentHashMap.getInstance();
 	
 	@Context
     private ContextResolver<ObjectMapper> mapperResolver;
@@ -152,9 +149,9 @@ public class JAXRSRestController {
 	public Response singletonMethod(SampleObject sampleObject, @Context HttpHeaders headers)
 	{
 		Ack ack = new Ack();
-		map.put(sampleObject.getName() , Integer.parseInt(sampleObject.getId()));
-		if(map.get("name1") != null)
-			ack.setUniqueId(map.get("name1").toString());
+		singletonConcurrentHashMapObj.setKeyValue(sampleObject.getName() , Integer.parseInt(sampleObject.getId()));
+		if(singletonConcurrentHashMapObj.getValue("name1") != null)
+			ack.setUniqueId(singletonConcurrentHashMapObj.getValue("name1").toString());
 		return Response.ok().entity(ack).build();
 	}
 }

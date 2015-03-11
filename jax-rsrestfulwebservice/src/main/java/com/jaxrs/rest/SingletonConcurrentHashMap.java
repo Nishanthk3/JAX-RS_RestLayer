@@ -1,19 +1,27 @@
 package com.jaxrs.rest;
 
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class SingletonConcurrentHashMap {
 
-	private static Map<String,Integer> hashMapInstance;
+	private static ConcurrentMap<String,Integer> concurrenthashMapInstance =  new ConcurrentHashMap<String, Integer>();
 
-	SingletonConcurrentHashMap(){ }
+	private SingletonConcurrentHashMap(){ }
+	
+	private static SingletonConcurrentHashMap  singletonConcurrentHashMapObj = new SingletonConcurrentHashMap();
 
-	/* Static 'instance' method */
-	public static Map<String,Integer> getInstance( ) {
-		if(hashMapInstance == null) {
-			hashMapInstance =  new ConcurrentHashMap<String,Integer>();
-	      }
-	      return hashMapInstance;
+	public static SingletonConcurrentHashMap getInstance( ) {
+	      return singletonConcurrentHashMapObj;
+	}
+	
+	public void setKeyValue(String key, Integer value)
+	{
+		concurrenthashMapInstance.put(key, value);
+	}
+	
+	public Integer getValue(String key)
+	{
+		return concurrenthashMapInstance.get(key);
 	}
 }
